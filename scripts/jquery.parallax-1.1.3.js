@@ -26,8 +26,8 @@ http://www.gnu.org/licenses/gpl.html
 		var paddingTop = 0;
 		
 		//get the starting position of each element to have parallax applied to it		
-		$this.each(function(){
-		    firstTop = $this.offset().top;
+		$this.each(function(i,e){
+		    firstTop = $(e).offset().top;
 		});
 
 		if (outerHeight) {
