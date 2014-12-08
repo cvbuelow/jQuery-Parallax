@@ -22,13 +22,12 @@ http://www.gnu.org/licenses/gpl.html
 	$.fn.parallax = function(xpos, speedFactor, outerHeight) {
 		var $this = $(this);
 		var getHeight;
-		var firstTop;
 		var paddingTop = 0;
 		
 		//get the starting position of each element to have parallax applied to it		
 		$this.each(function(i,e){
-		    $e = $(e);
-		    $e.data('firstTop', $e.offset().top);
+		    $element = $(e);
+		    $element.data('firstTop', $element.offset().top);
 		});
 
 		if (outerHeight) {
@@ -60,7 +59,7 @@ http://www.gnu.org/licenses/gpl.html
 					return;
 				}
 
-				$element.css('backgroundPosition', xpos + " " + Math.round(( $e.data('firstTop') - pos) * speedFactor) + "px");
+				$element.css('backgroundPosition', xpos + " " + Math.round(( $element.data('firstTop') - pos) * speedFactor) + "px");
 			});
 		}		
 
