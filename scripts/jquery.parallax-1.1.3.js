@@ -27,7 +27,8 @@ http://www.gnu.org/licenses/gpl.html
 		
 		//get the starting position of each element to have parallax applied to it		
 		$this.each(function(i,e){
-		    firstTop = $(e).offset().top;
+		    $e = $(e);
+		    $e.data('firstTop', $e.offset().top);
 		});
 
 		if (outerHeight) {
@@ -49,8 +50,8 @@ http://www.gnu.org/licenses/gpl.html
 		function update(){
 			var pos = $window.scrollTop();				
 
-			$this.each(function(){
-				var $element = $(this);
+			$this.each(function(i,e){
+				var $element = $(e);
 				var top = $element.offset().top;
 				var height = getHeight($element);
 
@@ -59,7 +60,7 @@ http://www.gnu.org/licenses/gpl.html
 					return;
 				}
 
-				$this.css('backgroundPosition', xpos + " " + Math.round((firstTop - pos) * speedFactor) + "px");
+				$element.css('backgroundPosition', xpos + " " + Math.round(( $e.data('firstTop') - pos) * speedFactor) + "px");
 			});
 		}		
 
